@@ -50,4 +50,12 @@ public class BankAccountEndpointTests {
                 .andExpect(jsonPath("$.name").value("Nmuta"))
                 .andExpect(jsonPath("$.balance").value(9000.00));
     }
+
+    @Test
+    void deleteAccountWithId() throws Exception{
+        mockMvc.perform(delete("/api/bankaccount/2"))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+    }
 }

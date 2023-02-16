@@ -38,7 +38,7 @@ public class BankAccountController {
     }
 
     @PutMapping("/update")
-    public void withdraw(@RequestBody BankAccount account){
+    public void updateAccount(@RequestBody BankAccount account){
         for(BankAccount acct : accounts){
             if (acct.getId() == account.getId()){
                 acct.setBalance(account.getBalance());
@@ -46,4 +46,12 @@ public class BankAccountController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteAccount(@PathVariable int id){
+        for(BankAccount acct : accounts){
+            if (acct.getId() == id){
+                accounts.remove(acct);
+            }
+        }
+    }
 }
