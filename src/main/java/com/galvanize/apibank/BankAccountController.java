@@ -37,5 +37,13 @@ public class BankAccountController {
         return ResponseEntity.status(HttpStatus.CREATED).body(newAccount);
     }
 
+    @PutMapping("/update")
+    public void withdraw(@RequestBody BankAccount account){
+        for(BankAccount acct : accounts){
+            if (acct.getId() == account.getId()){
+                acct.setBalance(account.getBalance());
+            }
+        }
+    }
 
 }

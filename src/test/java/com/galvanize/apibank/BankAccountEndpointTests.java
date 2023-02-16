@@ -37,4 +37,17 @@ public class BankAccountEndpointTests {
                 .andExpect(jsonPath("$.balance").value(0.99));
 
     }
+
+    @Test
+    void withdrawFromAccount() throws Exception{
+        String json = "{ \"id\": \"1\", \"name\": \"Nmuta\", \"balance\": \"9000.00\" }";
+        mockMvc.perform(put("/api/bankaccount/update").contentType(MediaType.APPLICATION_JSON).content(json))
+                .andDo(print())
+                .andExpect(status().isOk());
+        mockMvc.perform(get("/api/bankaccount/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.name").value("Nmuta"))
+                .andExpect(jsonPath("$.balance").value(9000.00));
+    }
 }
