@@ -1,9 +1,6 @@
 package com.galvanize.apibank;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -32,5 +29,13 @@ public class BankAccountController {
         }
         return bankAccount;
     }
+
+    @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<BankAccount> addBankAccount(@RequestBody BankAccount newAccount) {
+        accounts.add(newAccount);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newAccount);
+    }
+
 
 }
