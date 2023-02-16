@@ -39,7 +39,7 @@ public class BankAccountEndpointTests {
     }
 
     @Test
-    void withdrawFromAccount() throws Exception{
+    void updateAccountBalance() throws Exception{
         String json = "{ \"id\": \"1\", \"name\": \"Nmuta\", \"balance\": \"9000.00\" }";
         mockMvc.perform(put("/api/bankaccount/update").contentType(MediaType.APPLICATION_JSON).content(json))
                 .andDo(print())
