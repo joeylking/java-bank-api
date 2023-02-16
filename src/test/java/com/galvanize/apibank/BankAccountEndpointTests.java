@@ -19,7 +19,7 @@ public class BankAccountEndpointTests {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(3))
-                .andExpect(jsonPath("$.name").value("zach"))
+                .andExpect(jsonPath("$.name").value("Zach"))
                 .andExpect(jsonPath("$.balance").value(9.99));
     }
 }
